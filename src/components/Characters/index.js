@@ -1,49 +1,53 @@
-import React, { Component } from 'react'
-import axios from 'axios';
-import './Characters.scss';
+import React, { Component } from "react";
+import axios from "axios";
+import "./Characters.scss";
 
-import Card from '../Card'
+import Card from "../Card";
 
 class Characters extends Component {
-    state = {
-        characters: []
-    }
+  state = {
+    characters: []
+  };
 
-    componentDidMount = () => {
-        axios.get('https://swapi.co/api/people/').then(response => {
-            this.setState({characters: response.data.results})
-        });
-    }
+  componentDidMount = () => {
+    axios.get("https://swapi.co/api/people/").then(response => {
+      this.setState({ characters: response.data.results });
+    });
+  };
 
-    handleCardClick = character => {
-        const url = character.homeworld;
-        axios.get(url).then(response => {
-            this.addHomeworldInfo(character.name, response.data);
-        });
-    }
+  handleCardClick = character => {
+    const url = character.homeworld;
+    axios.get(url).then(response => {
+      this.addHomeworldInfo(character.name, response.data);
+    });
+  };
 
-    addHomeworldInfo = (name, homeWorldInfo) => {
-        const newCharacters = this.state.characters.slice();
-        const index = this.state.characters.findIndex(character => character.name === name);
-        newCharacters[index].homeWorldInfo = homeWorldInfo;
-        this.setState({characters: newCharacters})
-    }
+  addHomeworldInfo = (name, homeWorldInfo) => {
+    const newCharacters = this.state.characters.slice();
+    const index = this.state.characters.findIndex(
+      character => character.name === name
+    );
+    newCharacters[index].homeWorldInfo = homeWorldInfo;
+    this.setState({ characters: newCharacters });
+  };
 
-
-
-    render() {
-        return (
-            <div className="container">
-                {this.state.characters.map(character =>
-                    <Card key={character.name}
-                        character={character}
-                        onClick={() => this.handleCardClick(character)}
-                        />)
-                }
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className="container">
+        {this.state.characters.map(character => (
+          <Card
+            key={character.name}
+            character={character}
+            onClick={() => this.handleCardClick(character)}
+          />
+        ))}
+        <div className="actions">
+          <div className="button">Prev</div>
+          <div className="button">Next</div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Characters;
-

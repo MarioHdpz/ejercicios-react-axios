@@ -2,19 +2,18 @@
 
 ---
 
-### Ejercicio 1: Que Axios te acompañe
+### Ejercicio 2: Axios y React Router
 
-Tienes todo preparado para mostrar a los personajes de Star Wars.
+El API de Star Wars trae un número limitado de resultados en cada petición.
 
-Sin embargo sólo tienes uno y está "harcodeado".
+Para traer más los resultados debes hacer otra llamada a la url que se indica
+en los parámetros *previous* y *next* de la respuesta actual.
 
-Conéctate a https://swapi.co/ (API de Star Wars) para traer la información.
+Tu tarea será utilizar el React Router para poder navegar entre todas las páginas.
 
-El endpoint al que debes de llamar con una petición GET es el siguiente:
-
-`https://swapi.co/api/people/`
+El path de tu aplicación debe indicar el número de página en que estás y deberás habilitar los botones
+al inicio y final como Links de navegación.
 
 **Bonus**
 
-1. Al dar click sobre un personaje agrega a sus datos el nombre del planeta
-donde vive.
+

@@ -3,11 +3,10 @@ import './App.css';
 import './stars.sass';
 import Characters from './components/Characters';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, /*applyMiddleware*/ } from 'redux';
 import { characters } from './store/reducer';
-import thunk from 'redux-thunk';
 
-const store = createStore(characters, applyMiddleware(thunk));
+const store = createStore(characters);
 
 function App() {
   return (

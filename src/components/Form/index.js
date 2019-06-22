@@ -2,7 +2,6 @@ import React from "react";
 import { Component } from "react";
 import "./Form.scss";
 import { connect } from "react-redux";
-import { search } from '../../store/actions';
  
 class Form extends Component {
   state = {
@@ -24,7 +23,7 @@ class Form extends Component {
         />
         <div
           className="button"
-          onClick={() => this.props.dispatch(search(this.state.input))}
+          onClick={() => {/* */}}
         >
           Search
         </div>

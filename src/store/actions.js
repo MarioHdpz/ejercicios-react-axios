@@ -1,6 +1,6 @@
 
 import * as types from './action-types';
-import axios from 'axios';
+//import axios from 'axios';
 
 
 export const setCharacters = characters => ({
@@ -9,9 +9,5 @@ export const setCharacters = characters => ({
 })
 
 export const search = query => {
-    return async dispatch => {
-        const response = await axios.get(`https://swapi.co/api/people/?search=${query}`);
-        const { results } = response.data;
-        dispatch(setCharacters(results));
-    }
+    // Async content
 }

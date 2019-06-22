@@ -34,6 +34,10 @@ class Characters extends Component {
   render() {
     return (
       <div className="container">
+        <div className="actions">
+          <div className="button">Prev</div>
+          <div className="button">Next</div>
+        </div>
         {this.state.characters.map(character => (
           <Card
             key={character.name}

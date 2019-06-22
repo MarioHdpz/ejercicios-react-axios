@@ -1,18 +1,20 @@
 # Ejercicios React y Axios
-___
 
-### ¿Cómo usar?
+---
 
-Para cambiar entre ejercicios sólamente cambiate de rama de git, los ejercicios se encuentran en las ramas llamadas
-**exercise-<# de ejercicio>**:
+### Ejercicio 1: Que Axios te acompañe
 
-`git checkout exercise-1`
+Tienes todo preparado para mostrar a los personajes de Star Wars.
 
-Las instrucciones de cada ejercicio se muestran en esta mismo archivo README.md
-__
+Sin embargo sólo tienes uno y está "harcodeado".
 
-Para ver la solución puedes cambiarte a la ramas correspondientes llamadas **solution-<# de ejercicio>**
+Conéctate a https://swapi.co/ (API de Star Wars) para traer la información.
 
-`git checkout solution-1`
+El endpoint al que debes de llamar con una petición GET es el siguiente:
 
-¡Éxito!
+`https://swapi.co/api/people/`
+
+**Bonus**
+
+1. Al dar click sobre un personaje agrega a sus datos el nombre del planeta
+donde vive.

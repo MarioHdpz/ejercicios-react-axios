@@ -1,0 +1,14 @@
+.card {
+    background-color: rgba($color: #fff, $alpha: 0.1);
+    margin: 1em;
+    padding: 0.3em 1em;
+    color: yellow;
+    width: 600px;
+    ul {
+        li {
+            list-style-type: none;
+            font-size: 1.3em;
+        }
+    }
+}
+    

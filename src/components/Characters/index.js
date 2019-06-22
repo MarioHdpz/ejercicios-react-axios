@@ -1,57 +1,26 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React from "react";
 import "./Characters.scss";
 
+import Form from "../Form";
 import Card from "../Card";
+import { connect } from 'react-redux';
 
-class Characters extends Component {
-  state = {
-    characters: []
-  };
+const Characters = props => {
+  return (
+    <div className="container">
+      <Form />
+      {props.characters.map(character => (
+        <Card
+          key={character.name}
+          character={character}
+        />
+      ))}
+    </div>
+  );
+};
 
-  componentDidMount = () => {
-    axios.get("https://swapi.co/api/people/").then(response => {
-      this.setState({ characters: response.data.results });
-    });
-  };
+const mapStateToProps = state => ({
+  characters: state,
+});
 
-  handleCardClick = character => {
-    const url = character.homeworld;
-    axios.get(url).then(response => {
-      this.addHomeworldInfo(character.name, response.data);
-    });
-  };
-
-  addHomeworldInfo = (name, homeWorldInfo) => {
-    const newCharacters = this.state.characters.slice();
-    const index = this.state.characters.findIndex(
-      character => character.name === name
-    );
-    newCharacters[index].homeWorldInfo = homeWorldInfo;
-    this.setState({ characters: newCharacters });
-  };
-
-  render() {
-    return (
-      <div className="container">
-        <div className="actions">
-          <div className="button">Prev</div>
-          <div className="button">Next</div>
-        </div>
-        {this.state.characters.map(character => (
-          <Card
-            key={character.name}
-            character={character}
-            onClick={() => this.handleCardClick(character)}
-          />
-        ))}
-        <div className="actions">
-          <div className="button">Prev</div>
-          <div className="button">Next</div>
-        </div>
-      </div>
-    );
-  }
-}
-
-export default Characters;
+export default connect(mapStateToProps)(Characters);

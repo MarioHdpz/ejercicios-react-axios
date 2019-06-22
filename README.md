@@ -2,16 +2,18 @@
 
 ---
 
-### Ejercicio 2: Axios y React Router
+### Ejercicio 3: Buscador de Personajes
 
-El API de Star Wars trae un número limitado de resultados en cada petición.
+Vamos a aprovechar el API de Star Wars para buscar personajes.
 
-Para traer más los resultados debes hacer otra llamada al mismo endpoint pero agregando
-la página al final de la url: *?page=<número de página>*
+Cuentas con una aplicación que está conectada a un store de Redux donde
+se almacenan los personajes.
 
-Tu tarea será utilizar el React Router para poder navegar entre todas las páginas.
+Debes de disparar una acción que va a llamar al endpoint de personajes
+y debe tener un query de búsqueda, aprovecharemos que el API nos permite
+buscar por medio del parámetro *?search=*
 
-El path de tu aplicación debe indicar el número de página en que estás y deberás habilitar los botones
-al inicio y final como Links de navegación.
+Recuerda que al estar utilizando Redux debes encontrar la manera de que
+tus *action creators* sean manejados asíncronamente.
 
 **Bonus**

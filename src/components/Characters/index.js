@@ -4,16 +4,30 @@ import "./Characters.scss";
 
 import Card from "../Card";
 
+import { Link } from 'react-router-dom';
+
 class Characters extends Component {
   state = {
     characters: []
   };
 
   componentDidMount = () => {
-    axios.get("https://swapi.co/api/people/").then(response => {
+    this.getCharacters();
+  };
+
+  componentDidUpdate = prevProps => {
+    if (prevProps.match.params.page !== this.props.match.params.page) {
+      this.getCharacters();
+    }
+  }
+
+  getCharacters = () => {
+    const { params } = this.props.match;
+    const page = params.page ? params.page : 1;
+    axios.get(`https://swapi.co/api/people/?page=${page}`).then(response => {
       this.setState({ characters: response.data.results });
     });
-  };
+  }
 
   handleCardClick = character => {
     const url = character.homeworld;
@@ -32,8 +46,14 @@ class Characters extends Component {
   };
 
   render() {
+    const { params } = this.props.match;
+    const page = params.page ? parseInt(params.page) : 1;
     return (
       <div className="container">
+        <div className="actions">
+          {page > 1 ? <Link to={`/${page - 1}`}><div className="button">Prev</div></Link> : null}
+          <Link to={`/${page + 1}`}><div className="button">Next</div></Link>
+        </div>
         {this.state.characters.map(character => (
           <Card
             key={character.name}
@@ -42,8 +62,8 @@ class Characters extends Component {
           />
         ))}
         <div className="actions">
-          <div className="button">Prev</div>
-          <div className="button">Next</div>
+          {page > 1 ? <Link to={`/${page - 1}`}><div className="button">Prev</div></Link> : null}
+          <Link to={`/${page + 1}`}><div className="button">Next</div></Link>
         </div>
       </div>
     );
